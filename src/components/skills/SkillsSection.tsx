@@ -31,25 +31,25 @@ export function SkillsSection() {
   const skills = [
     {
       title: "Networking",
-      description: "Experienced in designing, implementing, and troubleshooting complex network infrastructures.",
+      description: "Experienced in LAN/WAN setup, router/switch configuration, network troubleshooting, and implementing security protocols for company networks.",
       icon: Network,
       delay: 1,
     },
     {
       title: "Technical Support",
-      description: "Providing high-level technical assistance and resolving complex technical issues efficiently.",
+      description: "Proficient in diagnosing and resolving hardware, software, and network issues. Expert in remote desktop support and IT system maintenance.",
       icon: HeadphonesIcon,
       delay: 2,
     },
     {
       title: "DevOps",
-      description: "Implementing CI/CD pipelines, containerization, and cloud infrastructure automation.",
+      description: "Knowledge of CI/CD pipelines, container technologies, infrastructure automation, and monitoring tools for optimized IT operations.",
       icon: Container,
       delay: 3,
     },
     {
       title: "Customer Support",
-      description: "Delivering exceptional customer service with a focus on technical problem-solving and communication.",
+      description: "Skilled in communicating technical concepts to non-technical users, managing customer expectations, and ensuring high satisfaction levels.",
       icon: Users,
       delay: 4,
     },
@@ -66,7 +66,7 @@ export function SkillsSection() {
       <div className="section-container">
         <SectionHeading 
           title="My Skills" 
-          subtitle="Leveraging technical expertise and industry knowledge to deliver exceptional results"
+          subtitle="Technical expertise and professional capabilities"
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

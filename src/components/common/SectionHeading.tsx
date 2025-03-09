@@ -6,6 +6,8 @@ interface SectionHeadingProps {
   subtitle?: string;
   centered?: boolean;
   className?: string;
+  titleClassName?: string;
+  subtitleClassName?: string;
 }
 
 export function SectionHeading({
@@ -13,6 +15,8 @@ export function SectionHeading({
   subtitle,
   centered = true,
   className,
+  titleClassName,
+  subtitleClassName,
 }: SectionHeadingProps) {
   return (
     <div
@@ -22,11 +26,11 @@ export function SectionHeading({
         className
       )}
     >
-      <h2 className="text-3xl font-bold tracking-tight sm:text-4xl animate-fade-in">
+      <h2 className={cn("text-3xl font-bold tracking-tight sm:text-4xl animate-fade-in", titleClassName)}>
         {title}
       </h2>
       {subtitle && (
-        <p className="text-muted-foreground max-w-3xl mx-auto animate-fade-in animate-delay-1">
+        <p className={cn("text-muted-foreground max-w-3xl mx-auto animate-fade-in animate-delay-1", subtitleClassName)}>
           {subtitle}
         </p>
       )}

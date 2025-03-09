@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { cn } from "@/lib/utils";
@@ -26,9 +26,9 @@ export function Navbar() {
 
   const navLinks = [
     { name: "Home", href: "#home" },
-    { name: "Skills", href: "#skills" },
-    { name: "Education", href: "#education" },
     { name: "Experience", href: "#experience" },
+    { name: "Skills", href: "#skills" },
+    { name: "Resume", href: "#resume" },
     { name: "About", href: "#about" },
     { name: "Contact", href: "#contact" },
   ];
@@ -56,6 +56,11 @@ export function Navbar() {
               {link.name}
             </a>
           ))}
+          <Button variant="outline" size="sm" asChild className="ml-2">
+            <a href="#contact">
+              <Calendar className="mr-2 h-4 w-4" /> Schedule Meeting
+            </a>
+          </Button>
           <ThemeToggle />
         </nav>
 
@@ -88,6 +93,13 @@ export function Navbar() {
                 {link.name}
               </a>
             ))}
+            <a
+              href="#contact"
+              className="px-4 py-3 text-sm font-medium transition-colors hover:bg-secondary rounded-md flex items-center"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              <Calendar className="mr-2 h-4 w-4" /> Schedule Meeting
+            </a>
           </nav>
         </div>
       )}

@@ -39,32 +39,25 @@ function ExperienceCard({ title, company, period, description, delay }: Experien
 export function ExperienceSection() {
   const experiences = [
     {
-      title: "Technical Support Engineer",
-      company: "Tech Solutions Ltd",
-      period: "2022 - Present",
-      description: "Providing high-level technical support for enterprise clients, troubleshooting complex network and system issues, and implementing technical solutions.",
+      title: "Customer Support Supervisor",
+      company: "Dish Media Network",
+      period: "2022 - 2024",
+      description: "Led the customer support team, resolved escalated technical issues, improved customer satisfaction metrics, and implemented new support protocols.",
       delay: 1,
     },
     {
-      title: "Network Administrator",
-      company: "Global IT Services",
-      period: "2020 - 2022",
-      description: "Managed and maintained network infrastructure, implemented security protocols, and conducted system upgrades for improved performance.",
+      title: "Technical Supervisor",
+      company: "Worldlink Communication Ltd",
+      period: "2019 - 2022",
+      description: "Managed technical operations, supervised technical teams, implemented network solutions, and ensured service quality standards were maintained.",
       delay: 2,
     },
     {
-      title: "Customer Service Specialist",
-      company: "Service Excellence Inc.",
-      period: "2018 - 2020",
-      description: "Delivered exceptional customer service, resolved client inquiries, and assisted with technical troubleshooting for product-related issues.",
+      title: "Technical Support",
+      company: "Kalash Services Pvt Ltd",
+      period: "2018 - 2019",
+      description: "Provided technical support to customers, troubleshooted hardware and software issues, and assisted with network configurations.",
       delay: 3,
-    },
-    {
-      title: "IT Intern",
-      company: "InnoTech Solutions",
-      period: "2017 - 2018",
-      description: "Assisted the IT team with daily operations, learned system administration, and gained hands-on experience with network configurations.",
-      delay: 4,
     },
   ];
 

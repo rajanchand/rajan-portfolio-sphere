@@ -3,7 +3,7 @@ import { SectionHeading } from "@/components/common/SectionHeading";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { MapPin, Mail, Phone, Send } from "lucide-react";
+import { MapPin, Mail, Phone, Send, Calendar } from "lucide-react";
 import { SocialLinks } from "@/components/common/SocialLinks";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
@@ -41,6 +41,13 @@ export function ContactSection() {
       });
       setIsSubmitting(false);
     }, 1500);
+  };
+
+  const handleSchedule = () => {
+    toast({
+      title: "Scheduling feature",
+      description: "The meeting scheduler will open in a new window. This is a demo feature.",
+    });
   };
 
   return (
@@ -100,6 +107,24 @@ export function ContactSection() {
                     >
                       +44 (123) 456-7890
                     </a>
+                  </div>
+                </div>
+
+                <div className="flex items-start">
+                  <div className="mr-4 mt-1">
+                    <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                      <Calendar className="h-5 w-5 text-primary" />
+                    </div>
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-medium">Schedule a Meeting</h4>
+                    <Button 
+                      variant="link" 
+                      className="p-0 h-auto text-muted-foreground hover:text-primary"
+                      onClick={handleSchedule}
+                    >
+                      Click here to schedule a meeting
+                    </Button>
                   </div>
                 </div>
               </div>
@@ -192,19 +217,30 @@ export function ContactSection() {
                   />
                 </div>
                 
-                <Button
-                  type="submit"
-                  className="w-full"
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting ? (
-                    "Sending..."
-                  ) : (
-                    <>
-                      <Send className="mr-2 h-4 w-4" /> Send Message
-                    </>
-                  )}
-                </Button>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Button
+                    type="submit"
+                    className="w-full"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? (
+                      "Sending..."
+                    ) : (
+                      <>
+                        <Send className="mr-2 h-4 w-4" /> Send Message
+                      </>
+                    )}
+                  </Button>
+                  
+                  <Button
+                    type="button"
+                    variant="outline"
+                    className="w-full"
+                    onClick={handleSchedule}
+                  >
+                    <Calendar className="mr-2 h-4 w-4" /> Schedule Meeting
+                  </Button>
+                </div>
               </form>
             </div>
           </div>
