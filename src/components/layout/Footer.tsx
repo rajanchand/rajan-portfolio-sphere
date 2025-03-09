@@ -1,6 +1,7 @@
 
 import { SocialLinks } from "@/components/common/SocialLinks";
-import { Mail, Phone, MapPin, ExternalLink } from "lucide-react";
+import { Mail, Phone, MapPin, ExternalLink, Heart } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -8,6 +9,21 @@ export function Footer() {
   return (
     <footer className="bg-secondary/70 pt-16 pb-6">
       <div className="container mx-auto px-4">
+        <div className="glass rounded-xl p-8 mb-12 text-center max-w-2xl mx-auto animate-fade-in">
+          <Heart className="h-12 w-12 text-primary mx-auto mb-4 animate-pulse-subtle" />
+          <h3 className="text-2xl font-bold mb-4 font-display">Thank You for Visiting</h3>
+          <p className="text-muted-foreground">
+            I appreciate you taking the time to explore my portfolio. If you have any questions or would like to discuss 
+            potential opportunities, please don't hesitate to reach out. I'm always open to connecting with new people
+            and exploring exciting projects.
+          </p>
+          <div className="mt-6">
+            <Button asChild>
+              <a href="#contact">Get in Touch</a>
+            </Button>
+          </div>
+        </div>
+        
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
             <h3 className="text-xl font-semibold mb-4 font-display">About Me</h3>
@@ -71,8 +87,8 @@ export function Footer() {
               </li>
               <li className="flex items-start">
                 <Mail className="h-5 w-5 text-primary mr-2 mt-0.5" />
-                <a href="mailto:rajan@example.com" className="text-muted-foreground hover:text-primary transition-colors">
-                  rajan@example.com
+                <a href="mailto:rajanchand48@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
+                  rajanchand48@gmail.com
                 </a>
               </li>
             </ul>

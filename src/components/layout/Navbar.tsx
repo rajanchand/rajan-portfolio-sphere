@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-import { Menu, X, Calendar } from "lucide-react";
+import { Menu, X, Calendar, Home, Briefcase, Cpu, GraduationCap, User, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { cn } from "@/lib/utils";
@@ -25,12 +25,12 @@ export function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: "Home", href: "#home" },
-    { name: "Experience", href: "#experience" },
-    { name: "Skills", href: "#skills" },
-    { name: "Resume", href: "#resume" },
-    { name: "About", href: "#about" },
-    { name: "Contact", href: "#contact" },
+    { name: "Home", href: "#home", icon: Home },
+    { name: "Experience", href: "#experience", icon: Briefcase },
+    { name: "Skills", href: "#skills", icon: Cpu },
+    { name: "Resume", href: "#resume", icon: GraduationCap },
+    { name: "About", href: "#about", icon: User },
+    { name: "Contact", href: "#contact", icon: Mail },
   ];
 
   return (
@@ -46,19 +46,27 @@ export function Navbar() {
         </a>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-1">
-          {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              className="px-4 py-2 text-sm font-medium transition-colors hover:text-primary link-underline"
-            >
-              {link.name}
-            </a>
-          ))}
-          <Button variant="outline" size="sm" asChild className="ml-2">
-            <a href="#contact">
-              <Calendar className="mr-2 h-4 w-4" /> Schedule Meeting
+        <nav className="hidden md:flex items-center space-x-2">
+          {navLinks.map((link) => {
+            const Icon = link.icon;
+            return (
+              <a
+                key={link.name}
+                href={link.href}
+                className="group relative flex flex-col items-center justify-center px-3 py-2"
+              >
+                <span className="w-10 h-10 rounded-full flex items-center justify-center transition-colors duration-300 group-hover:bg-primary/10">
+                  <Icon className="h-5 w-5 transition-colors duration-300 group-hover:text-primary" />
+                </span>
+                <span className="absolute bottom-0 text-xs font-medium opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:bottom-[-18px] group-hover:text-primary">
+                  {link.name}
+                </span>
+              </a>
+            );
+          })}
+          <Button variant="outline" size="sm" asChild className="ml-2 rounded-full">
+            <a href="#contact" className="flex items-center gap-2">
+              <Calendar className="h-4 w-4" /> Schedule Meeting
             </a>
           </Button>
           <ThemeToggle />
@@ -83,22 +91,26 @@ export function Navbar() {
       {isMenuOpen && (
         <div className="glass md:hidden py-4 animate-fade-in">
           <nav className="container mx-auto px-4 flex flex-col space-y-2">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="px-4 py-3 text-sm font-medium transition-colors hover:bg-secondary rounded-md"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {link.name}
-              </a>
-            ))}
+            {navLinks.map((link) => {
+              const Icon = link.icon;
+              return (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  className="px-4 py-3 text-sm font-medium transition-colors hover:bg-primary/10 rounded-md flex items-center"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  <Icon className="mr-3 h-5 w-5 text-primary" />
+                  {link.name}
+                </a>
+              );
+            })}
             <a
               href="#contact"
-              className="px-4 py-3 text-sm font-medium transition-colors hover:bg-secondary rounded-md flex items-center"
+              className="px-4 py-3 text-sm font-medium transition-colors hover:bg-primary/10 rounded-md flex items-center"
               onClick={() => setIsMenuOpen(false)}
             >
-              <Calendar className="mr-2 h-4 w-4" /> Schedule Meeting
+              <Calendar className="mr-3 h-5 w-5 text-primary" /> Schedule Meeting
             </a>
           </nav>
         </div>

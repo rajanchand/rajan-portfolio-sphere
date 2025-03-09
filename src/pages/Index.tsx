@@ -8,9 +8,12 @@ import { ExperienceSection } from "@/components/experience/ExperienceSection";
 import { AboutSection } from "@/components/about/AboutSection";
 import { ContactSection } from "@/components/contact/ContactSection";
 import { ResumeSection } from "@/components/resume/ResumeSection";
-import { useEffect } from "react";
+import { AISearch } from "@/components/home/AISearch";
+import { useEffect, useState } from "react";
 
 const Index = () => {
+  const [showSearch, setShowSearch] = useState(true);
+  
   // Scroll to section on hash change
   useEffect(() => {
     const handleHashChange = () => {
@@ -33,13 +36,21 @@ const Index = () => {
 
     // Add event listener for hash changes
     window.addEventListener("hashchange", handleHashChange);
+    
+    // Hide search after 30 seconds automatically if not interacted with
+    const timer = setTimeout(() => {
+      setShowSearch(false);
+    }, 30000);
+    
     return () => {
       window.removeEventListener("hashchange", handleHashChange);
+      clearTimeout(timer);
     };
   }, []);
 
   return (
     <div className="min-h-screen flex flex-col">
+      {showSearch && <AISearch />}
       <Navbar />
       <main>
         <Hero />

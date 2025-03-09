@@ -16,6 +16,7 @@ export function ContactSection() {
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showCalendly, setShowCalendly] = useState(false);
   const { toast } = useToast();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -44,10 +45,7 @@ export function ContactSection() {
   };
 
   const handleSchedule = () => {
-    toast({
-      title: "Scheduling feature",
-      description: "The meeting scheduler will open in a new window. This is a demo feature.",
-    });
+    setShowCalendly(true);
   };
 
   return (
@@ -85,10 +83,10 @@ export function ContactSection() {
                   <div>
                     <h4 className="text-lg font-medium">Email</h4>
                     <a 
-                      href="mailto:rajan@example.com" 
+                      href="mailto:rajanchand48@gmail.com" 
                       className="text-muted-foreground hover:text-primary transition-colors"
                     >
-                      rajan@example.com
+                      rajanchand48@gmail.com
                     </a>
                   </div>
                 </div>
@@ -153,96 +151,114 @@ export function ContactSection() {
           </div>
           
           <div className="animate-slide-in-right">
-            <div className="glass rounded-xl p-6">
-              <h3 className="text-2xl font-semibold mb-6">Send Me A Message</h3>
-              
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {showCalendly ? (
+              <div className="glass rounded-xl p-6 h-full">
+                <h3 className="text-2xl font-semibold mb-6">Schedule a Meeting</h3>
+                <div className="rounded-lg overflow-hidden h-[500px] border">
+                  <iframe
+                    src="https://calendly.com/rajanchand48"
+                    width="100%"
+                    height="100%"
+                    frameBorder="0"
+                    title="Calendly Scheduling Page"
+                  ></iframe>
+                </div>
+                <Button variant="outline" className="mt-4" onClick={() => setShowCalendly(false)}>
+                  Back to Contact Form
+                </Button>
+              </div>
+            ) : (
+              <div className="glass rounded-xl p-6">
+                <h3 className="text-2xl font-semibold mb-6">Send Me A Message</h3>
+                
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <label htmlFor="name" className="text-sm font-medium">
+                        Your Name
+                      </label>
+                      <Input
+                        id="name"
+                        name="name"
+                        placeholder="John Doe"
+                        required
+                        value={formData.name}
+                        onChange={handleChange}
+                      />
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <label htmlFor="email" className="text-sm font-medium">
+                        Your Email
+                      </label>
+                      <Input
+                        id="email"
+                        name="email"
+                        type="email"
+                        placeholder="john@example.com"
+                        required
+                        value={formData.email}
+                        onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+                  
                   <div className="space-y-2">
-                    <label htmlFor="name" className="text-sm font-medium">
-                      Your Name
+                    <label htmlFor="subject" className="text-sm font-medium">
+                      Subject
                     </label>
                     <Input
-                      id="name"
-                      name="name"
-                      placeholder="John Doe"
+                      id="subject"
+                      name="subject"
+                      placeholder="How can I help you?"
                       required
-                      value={formData.name}
+                      value={formData.subject}
                       onChange={handleChange}
                     />
                   </div>
                   
                   <div className="space-y-2">
-                    <label htmlFor="email" className="text-sm font-medium">
-                      Your Email
+                    <label htmlFor="message" className="text-sm font-medium">
+                      Your Message
                     </label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      placeholder="john@example.com"
+                    <Textarea
+                      id="message"
+                      name="message"
+                      placeholder="Write your message here..."
+                      rows={6}
                       required
-                      value={formData.email}
+                      value={formData.message}
                       onChange={handleChange}
                     />
                   </div>
-                </div>
-                
-                <div className="space-y-2">
-                  <label htmlFor="subject" className="text-sm font-medium">
-                    Subject
-                  </label>
-                  <Input
-                    id="subject"
-                    name="subject"
-                    placeholder="How can I help you?"
-                    required
-                    value={formData.subject}
-                    onChange={handleChange}
-                  />
-                </div>
-                
-                <div className="space-y-2">
-                  <label htmlFor="message" className="text-sm font-medium">
-                    Your Message
-                  </label>
-                  <Textarea
-                    id="message"
-                    name="message"
-                    placeholder="Write your message here..."
-                    rows={6}
-                    required
-                    value={formData.message}
-                    onChange={handleChange}
-                  />
-                </div>
-                
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <Button
-                    type="submit"
-                    className="w-full"
-                    disabled={isSubmitting}
-                  >
-                    {isSubmitting ? (
-                      "Sending..."
-                    ) : (
-                      <>
-                        <Send className="mr-2 h-4 w-4" /> Send Message
-                      </>
-                    )}
-                  </Button>
                   
-                  <Button
-                    type="button"
-                    variant="outline"
-                    className="w-full"
-                    onClick={handleSchedule}
-                  >
-                    <Calendar className="mr-2 h-4 w-4" /> Schedule Meeting
-                  </Button>
-                </div>
-              </form>
-            </div>
+                  <div className="flex flex-col sm:flex-row gap-4">
+                    <Button
+                      type="submit"
+                      className="w-full"
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? (
+                        "Sending..."
+                      ) : (
+                        <>
+                          <Send className="mr-2 h-4 w-4" /> Send Message
+                        </>
+                      )}
+                    </Button>
+                    
+                    <Button
+                      type="button"
+                      variant="outline"
+                      className="w-full"
+                      onClick={handleSchedule}
+                    >
+                      <Calendar className="mr-2 h-4 w-4" /> Schedule Meeting
+                    </Button>
+                  </div>
+                </form>
+              </div>
+            )}
           </div>
         </div>
       </div>
